@@ -1,9 +1,13 @@
 import { useState } from "react";
+import { format } from "date-fns";
+import { CalendarIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 import { Train, TrainStatus, CorridorId, STATUS_LABELS, CORRIDORS } from "@/types/train";
 import { useToast } from "@/hooks/use-toast";
 
@@ -18,13 +22,11 @@ interface TrainDialogProps {
 export function TrainDialog({ open, onOpenChange, train, defaultCorridor, onSave }: TrainDialogProps) {
   const { toast } = useToast();
   const [corridor, setCorridor] = useState<CorridorId>(train?.corridor || defaultCorridor || "BRV_OBRNICE");
-  const [date, setDate] = useState(() => {
+  const [date, setDate] = useState<Date | undefined>(() => {
     if (train?.departureIso) {
-      // Convert ISO to local date format
-      const dateObj = new Date(train.departureIso);
-      return new Date(dateObj.getTime() - (dateObj.getTimezoneOffset() * 60000)).toISOString().slice(0, 10);
+      return new Date(train.departureIso);
     }
-    return "";
+    return undefined;
   });
   const [status, setStatus] = useState<TrainStatus>(train?.status || "VOLNO");
 
@@ -39,7 +41,7 @@ export function TrainDialog({ open, onOpenChange, train, defaultCorridor, onSave
     }
 
     // Convert date to ISO with noon time to ensure consistent timezone handling
-    const departureIso = new Date(date + "T12:00:00").toISOString();
+    const departureIso = new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12, 0, 0).toISOString();
     
     // Check if more than 48h from now
     const now = new Date();
@@ -80,7 +82,7 @@ export function TrainDialog({ open, onOpenChange, train, defaultCorridor, onSave
     if (!newOpen) {
       // Reset form when closing
       setCorridor(defaultCorridor || "BRV_OBRNICE");
-      setDate("");
+      setDate(undefined);
       setStatus("VOLNO");
     }
   };
@@ -110,14 +112,35 @@ export function TrainDialog({ open, onOpenChange, train, defaultCorridor, onSave
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="date">Datum odjezdu</Label>
-            <Input
-              id="date"
-              type="date"
-              value={date}
-              onChange={(e) => setDate(e.target.value)}
-              min={new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString().slice(0, 10)}
-            />
+            <Label>Datum odjezdu</Label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <Button
+                  variant="outline"
+                  className={cn(
+                    "w-full justify-start text-left font-normal",
+                    !date && "text-muted-foreground"
+                  )}
+                >
+                  <CalendarIcon className="mr-2 h-4 w-4" />
+                  {date ? format(date, "d. M. yyyy") : <span>Vyberte datum</span>}
+                </Button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar
+                  mode="single"
+                  selected={date}
+                  onSelect={setDate}
+                  disabled={(date) => {
+                    const minDate = new Date();
+                    minDate.setDate(minDate.getDate() + 2); // 48 hours from now
+                    return date < minDate;
+                  }}
+                  initialFocus
+                  className={cn("p-3 pointer-events-auto")}
+                />
+              </PopoverContent>
+            </Popover>
             <p className="text-xs text-muted-foreground">
               Vlak musí odjíždět nejdříve za 48 hodin
             </p>
