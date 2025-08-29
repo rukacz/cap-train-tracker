@@ -18,28 +18,28 @@ interface TrainDialogProps {
 export function TrainDialog({ open, onOpenChange, train, defaultCorridor, onSave }: TrainDialogProps) {
   const { toast } = useToast();
   const [corridor, setCorridor] = useState<CorridorId>(train?.corridor || defaultCorridor || "BRV_OBRNICE");
-  const [datetime, setDatetime] = useState(() => {
+  const [date, setDate] = useState(() => {
     if (train?.departureIso) {
-      // Convert ISO to local datetime-local format
-      const date = new Date(train.departureIso);
-      return new Date(date.getTime() - (date.getTimezoneOffset() * 60000)).toISOString().slice(0, 16);
+      // Convert ISO to local date format
+      const dateObj = new Date(train.departureIso);
+      return new Date(dateObj.getTime() - (dateObj.getTimezoneOffset() * 60000)).toISOString().slice(0, 10);
     }
     return "";
   });
   const [status, setStatus] = useState<TrainStatus>(train?.status || "VOLNO");
 
   const handleSave = () => {
-    if (!datetime) {
+    if (!date) {
       toast({
         title: "Chyba",
-        description: "Vyberte datum a čas odjezdu",
+        description: "Vyberte datum odjezdu",
         variant: "destructive"
       });
       return;
     }
 
-    // Convert local datetime to ISO
-    const departureIso = new Date(datetime).toISOString();
+    // Convert date to ISO with noon time to ensure consistent timezone handling
+    const departureIso = new Date(date + "T12:00:00").toISOString();
     
     // Check if more than 48h from now
     const now = new Date();
@@ -80,7 +80,7 @@ export function TrainDialog({ open, onOpenChange, train, defaultCorridor, onSave
     if (!newOpen) {
       // Reset form when closing
       setCorridor(defaultCorridor || "BRV_OBRNICE");
-      setDatetime("");
+      setDate("");
       setStatus("VOLNO");
     }
   };
@@ -110,13 +110,13 @@ export function TrainDialog({ open, onOpenChange, train, defaultCorridor, onSave
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="datetime">Datum a čas odjezdu</Label>
+            <Label htmlFor="date">Datum odjezdu</Label>
             <Input
-              id="datetime"
-              type="datetime-local"
-              value={datetime}
-              onChange={(e) => setDatetime(e.target.value)}
-              min={new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString().slice(0, 16)}
+              id="date"
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              min={new Date(Date.now() + 48 * 60 * 60 * 1000).toISOString().slice(0, 10)}
             />
             <p className="text-xs text-muted-foreground">
               Vlak musí odjíždět nejdříve za 48 hodin
