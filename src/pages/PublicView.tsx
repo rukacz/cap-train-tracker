@@ -27,29 +27,29 @@ export default function PublicView() {
 
   if (isLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-background to-muted flex items-center justify-center">
+      <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-yellow-100 flex items-center justify-center">
         <div className="text-center">
-          <TrainIcon className="w-8 h-8 animate-pulse mx-auto mb-4 text-primary" />
-          <p className="text-muted-foreground">Načítání kapacit...</p>
+          <TrainIcon className="w-8 h-8 animate-pulse mx-auto mb-4 text-yellow-600" />
+          <p className="text-gray-600">Načítání kapacit...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background to-muted">
+    <div className="min-h-screen bg-gradient-to-br from-yellow-50 to-yellow-100">
       {/* Header */}
-      <header className="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-10">
+      <header className="bg-gradient-to-r from-yellow-100 to-yellow-200/90 backdrop-blur-sm border-b border-yellow-300 sticky top-0 z-10 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-3">
             <img 
               src="/medlog-logo.svg" 
               alt="Medlog Logo" 
-              className="h-10 w-auto"
+              className="h-12 w-auto"
             />
             <div>
-              <h1 className="text-2xl font-bold text-foreground">Medlog CapTrain</h1>
-              <p className="text-sm text-muted-foreground">Aktuální kapacity vlakových spojů</p>
+              <h1 className="text-2xl font-bold text-gray-800">Medlog CapTrain</h1>
+              <p className="text-sm text-gray-600">Aktuální kapacity vlakových spojů</p>
             </div>
           </div>
         </div>
@@ -58,24 +58,24 @@ export default function PublicView() {
       {/* Main content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Info card */}
-        <Card className="mb-8 bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
+        <Card className="mb-8 bg-gradient-to-r from-yellow-100 to-yellow-200/70 border-yellow-300 shadow-lg">
           <CardContent className="p-6">
             <div className="flex items-start gap-3">
-              <Info className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+              <Info className="w-6 h-6 text-yellow-700 mt-0.5 flex-shrink-0" />
               <div>
-                <h2 className="font-semibold text-foreground mb-2">Jak číst kapacity</h2>
+                <h2 className="font-semibold text-gray-800 mb-2">Jak číst kapacity</h2>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-status-available"></div>
-                    <span><strong>Volno:</strong> Kapacita dostupná</span>
+                    <span className="text-gray-700"><strong>Volno:</strong> Kapacita dostupná</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-status-inquiry"></div>
-                    <span><strong>Na dotaz:</strong> Kontaktujte nás</span>
+                    <span className="text-gray-700"><strong>Na dotaz:</strong> Kontaktujte nás</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <div className="w-3 h-3 rounded-full bg-status-full"></div>
-                    <span><strong>Plno:</strong> Kapacita vyčerpána</span>
+                    <span className="text-gray-700"><strong>Plno:</strong> Kapacita vyčerpána</span>
                   </div>
                 </div>
               </div>
@@ -97,7 +97,7 @@ export default function PublicView() {
         </div>
 
         {/* Footer info */}
-        <div className="mt-12 text-center text-sm text-muted-foreground">
+        <div className="mt-12 text-center text-sm text-gray-600">
           <p>Data se automaticky aktualizují. Zobrazují se pouze spoje odjíždějící za více než 48 hodin.</p>
           <p className="mt-1">Pro objednávku nebo dotaz nás prosím kontaktujte.</p>
         </div>

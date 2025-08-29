@@ -1,6 +1,18 @@
 <svg width="200" height="60" viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <text x="0" y="35" fill="#2D2D2D" font-family="Arial, sans-serif" font-size="28" font-weight="bold">MEDLOG</text>
-  <text x="0" y="55" fill="#2D2D2D" font-family="Arial, sans-serif" font-size="12">Transport & Logistics</text>
-  <rect x="170" y="10" width="25" height="15" fill="#D4AF37" rx="2"/>
+  <!-- MEDLOG text with arrow-shaped E -->
+  <text x="0" y="35" fill="#2D2D2D" font-family="Arial, sans-serif" font-size="28" font-weight="bold">
+    M
+    <tspan x="20" fill="#FFD700">E</tspan>
+    DLOG
+  </text>
+  
+  <!-- Arrow-shaped E (custom path) -->
+  <path d="M20 15 L20 45 L45 45 L45 40 L25 40 L25 35 L42 35 L42 30 L25 30 L25 25 L45 25 L45 20 L20 20 Z" fill="#FFD700"/>
+  
+  <!-- Transport & Logistics tagline -->
+  <text x="0" y="55" fill="#2D2D2D" font-family="Arial, sans-serif" font-size="12" font-weight="400">Transport & Logistics</text>
+  
+  <!-- Decorative element -->
+  <rect x="170" y="10" width="25" height="15" fill="#FFD700" rx="2"/>
   <rect x="175" y="15" width="15" height="5" fill="#2D2D2D" rx="1"/>
 </svg>

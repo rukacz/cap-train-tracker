@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "corridor": "BRV_OBRNICE",
+    "departureIso": "2024-12-25T08:30:00.000Z",
+    "status": "VOLNO"
+  },
+  {
+    "id": "2",
+    "corridor": "BRV_OBRNICE",
+    "departureIso": "2024-12-26T14:15:00.000Z",
+    "status": "DOTAZ"
+  },
+  {
+    "id": "3",
+    "corridor": "HAM_OBRNICE",
+    "departureIso": "2024-12-27T10:00:00.000Z",
+    "status": "PLNO"
+  },
+  {
+    "id": "4",
+    "corridor": "BRV_MOSNOV",
+    "departureIso": "2024-12-28T09:45:00.000Z",
+    "status": "VOLNO"
+  },
+  {
+    "id": "5",
+    "corridor": "HAM_MOSNOV",
+    "departureIso": "2024-12-29T16:20:00.000Z",
+    "status": "DOTAZ"
+  },
+  {
+    "id": "6",
+    "corridor": "BRV_OBRNICE",
+    "departureIso": "2024-12-30T12:00:00.000Z",
+    "status": "VOLNO"
+  },
+  {
+    "id": "7",
+    "corridor": "HAM_MOSNOV",
+    "departureIso": "2024-12-31T18:30:00.000Z",
+    "status": "VOLNO"
+  }
+]

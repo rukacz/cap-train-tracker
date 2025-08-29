@@ -22,8 +22,8 @@
     /* Medlog Primary - Signature Yellow */
     --primary: 45 100% 51%;           /* Medlog Golden Yellow */
     --primary-foreground: 222.2 84% 4.9%;
-    --primary-light: 45 100% 65%;
-    --primary-dark: 45 100% 35%;
+    --primary-light: 45 100% 65%;      /* Lighter yellow */
+    --primary-dark: 45 100% 35%;       /* Darker yellow */
 
     /* Railway Secondary - Steel gray */
     --secondary: 220 15% 92%;
@@ -59,10 +59,12 @@
     --shadow-card: 0 4px 6px -1px hsl(220 15% 15% / 0.08), 0 2px 4px -1px hsl(220 15% 15% / 0.04);
     --shadow-elevated: 0 10px 25px -3px hsl(220 15% 15% / 0.12), 0 4px 6px -2px hsl(220 15% 15% / 0.08);
     
-    /* Gradients */
+    /* Gradients - Enhanced with more yellow */
     --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 100%);
-    --gradient-bg: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(220 15% 94%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(220 10% 98%) 100%);
+    --gradient-bg: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(45 100% 97%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(45 100% 98%) 100%);
+    --gradient-yellow: linear-gradient(135deg, hsl(45 100% 51%) 0%, hsl(45 100% 65%) 100%);
+    --gradient-yellow-subtle: linear-gradient(135deg, hsl(45 100% 95%) 0%, hsl(45 100% 98%) 100%);
 
     --sidebar-background: 0 0% 98%;
 
@@ -127,5 +129,24 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom MEDLOG yellow accents */
+@layer components {
+  .medlog-yellow {
+    @apply bg-gradient-to-r from-yellow-400 to-yellow-500;
+  }
+  
+  .medlog-yellow-subtle {
+    @apply bg-gradient-to-r from-yellow-50 to-yellow-100;
+  }
+  
+  .medlog-border {
+    @apply border-yellow-400/20;
+  }
+  
+  .medlog-shadow {
+    box-shadow: 0 4px 6px -1px hsl(45 100% 51% / 0.1), 0 2px 4px -1px hsl(45 100% 51% / 0.06);
   }
 }
