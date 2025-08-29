@@ -2,41 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* CapTrain Railway Design System - Modern logistics UI with premium railway aesthetics */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Background & Base */
+    --background: 220 15% 97%;
+    --foreground: 220 25% 15%;
 
+    /* Card System */
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 220 25% 15%;
 
+    /* Popover */
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover-foreground: 220 25% 15%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Railway Primary - Deep train blue */
+    --primary: 214 85% 25%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 214 65% 45%;
+    --primary-dark: 214 90% 15%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Railway Secondary - Steel gray */
+    --secondary: 220 15% 92%;
+    --secondary-foreground: 220 25% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted tones */
+    --muted: 220 15% 95%;
+    --muted-foreground: 220 15% 45%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Railway orange */
+    --accent: 25 85% 55%;
+    --accent-foreground: 0 0% 98%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    /* Status Colors - Railway inspired */
+    --status-available: 120 60% 45%;    /* Green - VOLNO */
+    --status-inquiry: 35 90% 55%;       /* Orange - NA DOTAZ */
+    --status-full: 0 75% 55%;           /* Red - PLNO */
+    --status-available-bg: 120 60% 95%;
+    --status-inquiry-bg: 35 90% 95%;
+    --status-full-bg: 0 75% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    /* Destructive */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 98%;
 
-    --radius: 0.5rem;
+    /* UI Elements */
+    --border: 220 15% 88%;
+    --input: 220 15% 92%;
+    --ring: 214 85% 25%;
+
+    /* Design tokens */
+    --radius: 0.75rem;
+    --shadow-card: 0 4px 6px -1px hsl(220 15% 15% / 0.08), 0 2px 4px -1px hsl(220 15% 15% / 0.04);
+    --shadow-elevated: 0 10px 25px -3px hsl(220 15% 15% / 0.12), 0 4px 6px -2px hsl(220 15% 15% / 0.08);
+    
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-light)) 100%);
+    --gradient-bg: linear-gradient(180deg, hsl(var(--background)) 0%, hsl(220 15% 94%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(var(--card)) 0%, hsl(220 10% 98%) 100%);
 
     --sidebar-background: 0 0% 98%;
 
