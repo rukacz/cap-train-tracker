@@ -42,11 +42,13 @@ export default function PublicView() {
       <header className="bg-white/80 backdrop-blur-sm border-b sticky top-0 z-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-3">
-            <div className="p-2 bg-primary rounded-lg">
-              <TrainIcon className="w-6 h-6 text-primary-foreground" />
-            </div>
+            <img 
+              src="/medlog-logo.svg" 
+              alt="Medlog Logo" 
+              className="h-10 w-auto"
+            />
             <div>
-              <h1 className="text-2xl font-bold text-foreground">CapTrain</h1>
+              <h1 className="text-2xl font-bold text-foreground">Medlog CapTrain</h1>
               <p className="text-sm text-muted-foreground">Aktuální kapacity vlakových spojů</p>
             </div>
           </div>

@@ -1,8 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* CapTrain Railway Design System - Modern logistics UI with premium railway aesthetics */
+/* Medlog Railway Design System - Premium logistics UI with Medlog branding */
 
 @layer base {
   :root {
@@ -18,11 +19,11 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 25% 15%;
 
-    /* Railway Primary - Deep train blue */
-    --primary: 214 85% 25%;
-    --primary-foreground: 0 0% 98%;
-    --primary-light: 214 65% 45%;
-    --primary-dark: 214 90% 15%;
+    /* Medlog Primary - Signature Yellow */
+    --primary: 45 100% 51%;           /* Medlog Golden Yellow */
+    --primary-foreground: 222.2 84% 4.9%;
+    --primary-light: 45 100% 65%;
+    --primary-dark: 45 100% 35%;
 
     /* Railway Secondary - Steel gray */
     --secondary: 220 15% 92%;
@@ -32,8 +33,8 @@
     --muted: 220 15% 95%;
     --muted-foreground: 220 15% 45%;
 
-    /* Accent - Railway orange */
-    --accent: 25 85% 55%;
+    /* Accent - Medlog Dark Gray */
+    --accent: 220 25% 15%;
     --accent-foreground: 0 0% 98%;
 
     /* Status Colors - Railway inspired */
@@ -51,7 +52,7 @@
     /* UI Elements */
     --border: 220 15% 88%;
     --input: 220 15% 92%;
-    --ring: 214 85% 25%;
+    --ring: 45 100% 51%;
 
     /* Design tokens */
     --radius: 0.75rem;
